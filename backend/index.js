@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db.js";
 import orderRoutes from "./src/routes/routes.js";
+import cors from "cors";
 import { setServers } from "node:dns/promises";
 setServers(["1.1.1.1", "8.8.8.8"]);
 
@@ -10,6 +11,7 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.use("/orders", orderRoutes);
 

@@ -24,59 +24,59 @@ export default function OrdersPage() {
 
    return (
     <div className="bg-white p-6 rounded shadow">
-      <h1 className="text-2xl font-bold text-indigo-600 mb-6">Orders</h1>
+      <h1 className="text-3xl font-bold text-indigo-600 mb-6">Orders</h1>
 
       <div className="flex gap-2 mb-6">
         <input
-          className="border rounded px-3 py-2 w-60"
+          className="border border-gray-300 rounded px-3 py-2 w-60 text-gray-900 placeholder:text-gray-500"
           placeholder="Filter by Store ID"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
         <button
           onClick={handleFilter}
-          className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+          className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 font-medium"
         >
           Filter
         </button>
         {storeId && (
           <button
             onClick={() => { setStoreId(""); setInput(""); setPage(1); }}
-            className="text-gray-500 text-sm underline"
+            className="text-gray-900 text-sm underline font-medium hover:text-indigo-600"
           >
             Clear
           </button>
         )}
       </div>
 
-      {isLoading && <p className="text-gray-500">Loading...</p>}
-      {isError && <p className="text-red-500">Failed to fetch orders.</p>}
+      {isLoading && <p className="text-gray-700 font-medium">Loading...</p>}
+      {isError && <p className="text-red-600 font-medium">Failed to fetch orders.</p>}
 
       {data && (
         <>
           <table className="w-full text-sm text-left">
-            <thead className="bg-gray-100 text-gray-600">
+            <thead className="bg-indigo-50 border-b-2 border-indigo-200">
               <tr>
-                <th className="px-4 py-2">Order ID</th>
-                <th className="px-4 py-2">Store</th>
-                <th className="px-4 py-2">Amount</th>
-                <th className="px-4 py-2">Status</th>
-                <th className="px-4 py-2">Created</th>
-                <th className="px-4 py-2">Action</th>
+                <th className="px-4 py-2 font-bold text-gray-900">Order ID</th>
+                <th className="px-4 py-2 font-bold text-gray-900">Store</th>
+                <th className="px-4 py-2 font-bold text-gray-900">Amount</th>
+                <th className="px-4 py-2 font-bold text-gray-900">Status</th>
+                <th className="px-4 py-2 font-bold text-gray-900">Created</th>
+                <th className="px-4 py-2 font-bold text-gray-900">Action</th>
               </tr>
             </thead>
             <tbody>
               {data.data.map((order) => (
-                <tr key={order._id} className="border-t hover:bg-gray-50">
-                  <td className="px-4 py-2 font-mono text-xs">{order._id.slice(-6)}</td>
-                  <td className="px-4 py-2">{order.store_id}</td>
-                  <td className="px-4 py-2">₹{order.total_amount}</td>
+                <tr key={order._id} className="border-t border-gray-200 hover:bg-gray-50">
+                  <td className="px-4 py-2 font-mono text-xs text-gray-700">{order._id.slice(-6)}</td>
+                  <td className="px-4 py-2 text-gray-800 font-medium">{order.store_id}</td>
+                  <td className="px-4 py-2 text-gray-800 font-medium">₹{order.total_amount}</td>
                   <td className="px-4 py-2"><StatusBadge status={order.status} /></td>
-                  <td className="px-4 py-2">{new Date(order.created_at).toLocaleDateString()}</td>
+                  <td className="px-4 py-2 text-gray-700">{new Date(order.created_at).toLocaleDateString()}</td>
                   <td className="px-4 py-2">
                     <button
                       onClick={() => router.push(`/orders/${order._id}`)}
-                      className="text-indigo-600 hover:underline text-xs"
+                      className="text-indigo-600 hover:text-indigo-800 font-medium text-xs"
                     >
                       Update
                     </button>

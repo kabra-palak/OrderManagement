@@ -37,15 +37,15 @@ export default function CreateOrderPage() {
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">Create Order</h1>
-          <p className="text-sm text-gray-400 mt-1">Fill in the details to place a new order</p>
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Create Order</h1>
+          <p className="text-sm text-gray-700 mt-1 font-medium">Fill in the details to place a new order</p>
         </div>
 
         {/* Store ID */}
         <div className="mb-5">
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Store ID</label>
+          <label className="block text-sm font-bold text-gray-900 mb-1.5">Store ID</label>
           <input
-            className="w-full border border-gray-200 rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder:text-gray-300"
+            className="w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder:text-gray-500"
             placeholder="e.g. store_1"
             value={storeId}
             onChange={(e) => setStoreId(e.target.value)}
@@ -54,12 +54,12 @@ export default function CreateOrderPage() {
 
         {/* Total Amount */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Total Amount</label>
+          <label className="block text-sm font-bold text-gray-900 mb-1.5">Total Amount</label>
           <div className="relative">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">₹</span>
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-gray-700 font-bold">₹</span>
             <input
               type="number"
-              className="w-full border border-gray-200 rounded-lg pl-8 pr-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder:text-gray-300"
+              className="w-full border border-gray-300 rounded-lg pl-8 pr-3.5 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder:text-gray-500"
               placeholder="e.g. 499"
               value={totalAmount}
               onChange={(e) => setTotalAmount(e.target.value)}
@@ -70,33 +70,33 @@ export default function CreateOrderPage() {
         {/* Items */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-bold text-gray-900">
               Items
-              <span className="ml-2 text-xs font-normal text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+              <span className="ml-2 text-xs font-normal text-gray-700 bg-indigo-50 px-2 py-0.5 rounded-full">
                 {items.length}
               </span>
             </label>
           </div>
 
-          <div className="rounded-xl border border-gray-100 overflow-hidden divide-y divide-gray-50">
+          <div className="rounded-xl border border-gray-300 overflow-hidden divide-y divide-gray-200">
             {/* Column headers */}
-            <div className="grid grid-cols-[1fr_80px_36px] gap-2 px-4 py-2 bg-gray-50">
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Item ID</span>
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Qty</span>
+            <div className="grid grid-cols-[1fr_80px_36px] gap-2 px-4 py-2 bg-indigo-50">
+              <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">Item ID</span>
+              <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">Qty</span>
               <span />
             </div>
 
             {items.map((item, index) => (
-              <div key={index} className="grid grid-cols-[1fr_80px_36px] gap-2 items-center px-4 py-3 bg-white hover:bg-gray-50/60 transition-colors">
+              <div key={index} className="grid grid-cols-[1fr_80px_36px] gap-2 items-center px-4 py-3 bg-white hover:bg-gray-50 transition-colors">
                 <input
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder:text-gray-300"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition placeholder:text-gray-500"
                   placeholder="item_001"
                   value={item.item_id}
                   onChange={(e) => updateItem(index, "item_id", e.target.value)}
                 />
                 <input
                   type="number"
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-center text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                   min={1}
                   value={item.qty}
                   onChange={(e) => updateItem(index, "qty", e.target.value)}
@@ -130,7 +130,7 @@ export default function CreateOrderPage() {
 
         {/* Error */}
         {isError && (
-          <div className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-lg px-4 py-2.5 mb-4">
+          <div className="text-sm font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5 mb-4">
             Failed to create order. Please try again.
           </div>
         )}

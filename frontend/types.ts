@@ -20,3 +20,22 @@ export interface OrdersResponse {
   page: number;
   limit: number;
 }
+
+export type AnalyticsOrdersPerDay = {
+  _id: string;
+  count: number;
+  revenue: number;
+};
+
+export type AnalyticsRevenuePerStore = {
+  _id: string;
+  total_revenue: number;
+  total_orders: number;
+  avg_order_value: number;
+};
+
+export type AnalyticsTopItem = {
+  item_id: string;
+  total_qty: number;
+  total_orders: number;
+};

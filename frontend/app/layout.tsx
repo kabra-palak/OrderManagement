@@ -2,6 +2,7 @@
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
+import Link from "next/link";
 import "./globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -9,10 +10,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="bg-gray-50 min-h-screen">
         <QueryClientProvider client={queryClient}>
-          <nav className="bg-white shadow px-6 py-4 flex gap-6">
-            <a href="/" className="font-bold text-xl text-indigo-600">OrderMS</a>
-            <a href="/create-order" className="text-gray-600 hover:text-indigo-600">Create Order</a>
-            <a href="/orders" className="text-gray-600 hover:text-indigo-600">Orders</a>
+          <nav className="bg-white border-b border-gray-100 px-8 h-14 flex items-center gap-8 sticky top-0 z-50">
+            <Link href="/" className="font-bold text-base text-indigo-600 tracking-tight mr-auto">
+              OrderMS
+            </Link>
+            <Link href="/create-order" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
+              Create Order
+            </Link>
+            <Link href="/orders" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
+              Orders
+            </Link>
           </nav>
           <main className="max-w-5xl mx-auto px-4 py-8">{children}</main>
         </QueryClientProvider>

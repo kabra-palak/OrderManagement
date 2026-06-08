@@ -1,8 +1,10 @@
 import Order from "../models/order.js";
+import { getIO } from "../socket.js";
 
 export const createOrder = async (req, res, next) => {
   try {
     const order = await Order.create(req.body);
+    getIO().emit("order:created", order); // ✅ correct event + global emit
     res.status(201).json(order);
   } catch (err) {
     next(err);
@@ -34,6 +36,8 @@ export const updateStatus = async (req, res, next) => {
       { new: true }
     );
     if (!order) return res.status(404).json({ message: "Order not found" });
+     console.log("Emitting order:updated for", order._id); // add this
+    getIO().emit("order:updated", { _id: order._id, status: order.status });
     res.json(order);
   } catch (err) {
     next(err);

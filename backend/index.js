@@ -9,7 +9,7 @@ import cors from "cors";
 import connectDB from "./db.js";
 import orderRoutes from "./src/routes/routes.js";
 import { initSocket } from "./src/socket.js";
-
+import analyticsRoutes from "./src/routes/analytics.js";
 dotenv.config();
 connectDB();
 
@@ -19,6 +19,7 @@ const httpServer = createServer(app);
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use("/orders", orderRoutes);
+app.use("/", analyticsRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {

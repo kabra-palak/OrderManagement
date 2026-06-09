@@ -16,7 +16,10 @@ connectDB();
 const app = express();
 const httpServer = createServer(app);
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({     
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+ }));
 app.use(express.json());
 app.use("/orders", orderRoutes);
 app.use("/", analyticsRoutes);

@@ -5,8 +5,12 @@ let io;
 export const initSocket = (httpServer) => {
   io = new Server(httpServer, {
     cors: {
-      origin: process.env.CLIENT_URL,
+      origin: [
+      "http://localhost:3000",
+      "https://order-management-neon-five.vercel.app",
+    ],
       methods: ["GET", "POST", "PATCH"],
+      credentials: true,
     },
   });
 

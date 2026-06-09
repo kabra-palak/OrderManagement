@@ -16,8 +16,13 @@ connectDB();
 const app = express();
 const httpServer = createServer(app);
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://order-management-neon-five.vercel.app",
+];
+
 app.use(cors({     
-  origin: process.env.CLIENT_URL,
+  origin: allowedOrigins,
   credentials: true,
  }));
 app.use(express.json());

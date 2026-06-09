@@ -23,31 +23,46 @@ export default function OrdersPage() {
   };
 
    return (
-    <div className="bg-white p-6 rounded shadow">
-      <h1 className="text-3xl font-bold text-indigo-600 mb-6">Orders</h1>
+    <div className="min-h-[85vh] bg-slate-50 py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="bg-white border border-slate-200 rounded-[2rem] shadow-sm p-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-8">
+            <div>
+              <h1 className="text-4xl font-semibold tracking-tight text-slate-900">Orders</h1>
+              <p className="text-sm text-slate-600 mt-2">View and filter active orders across your stores.</p>
+            </div>
+            <button
+              onClick={() => router.push("/create-order")}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+            >
+              + New Order
+            </button>
+          </div>
 
-      <div className="flex gap-2 mb-6">
-        <input
-          className="border border-gray-300 rounded px-3 py-2 w-60 text-gray-900 placeholder:text-gray-500"
-          placeholder="Filter by Store ID"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button
-          onClick={handleFilter}
-          className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 font-medium"
-        >
-          Filter
-        </button>
-        {storeId && (
-          <button
-            onClick={() => { setStoreId(""); setInput(""); setPage(1); }}
-            className="text-gray-900 text-sm underline font-medium hover:text-indigo-600"
-          >
-            Clear
-          </button>
-        )}
-      </div>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center mb-6">
+            <div className="flex-1 min-w-0">
+              <input
+                className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                placeholder="Filter by Store ID"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </div>
+            <button
+              onClick={handleFilter}
+              className="rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+            >
+              Filter
+            </button>
+            {storeId && (
+              <button
+                onClick={() => { setStoreId(""); setInput(""); setPage(1); }}
+                className="text-sm font-semibold text-blue-600 hover:text-blue-800"
+              >
+                Clear
+              </button>
+            )}
+          </div>
 
       {isLoading && <p className="text-gray-700 font-medium">Loading...</p>}
       {isError && <p className="text-red-600 font-medium">Failed to fetch orders.</p>}
@@ -95,5 +110,7 @@ export default function OrdersPage() {
         </>
       )}
     </div>
+    </div>
+  </div>
   );
 }

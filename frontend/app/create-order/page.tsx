@@ -32,14 +32,18 @@ export default function CreateOrderPage() {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-8">
-      <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-8">
+    <div className="min-h-[85vh] bg-slate-50 py-10">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="bg-white border border-slate-200 rounded-[2rem] shadow-sm p-8">
 
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Create Order</h1>
-          <p className="text-sm text-gray-700 mt-1 font-medium">Fill in the details to place a new order</p>
-        </div>
+          {/* Header */}
+          <div className="mb-8">
+            <span className="inline-flex items-center rounded-full bg-blue-50 text-blue-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide mb-3">
+              Create Order
+            </span>
+            <h1 className="text-4xl font-semibold tracking-tight text-slate-900">Create a new order</h1>
+            <p className="text-sm text-slate-600 mt-2">Add store, items, and order total, then submit to track it immediately.</p>
+          </div>
 
         {/* Store ID */}
         <div className="mb-5">
@@ -154,5 +158,6 @@ export default function CreateOrderPage() {
 
       </div>
     </div>
+  </div>
   );
 }

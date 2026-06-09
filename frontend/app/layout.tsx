@@ -11,21 +11,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="bg-gray-50 min-h-screen">
         <QueryClientProvider client={queryClient}>
-          <nav className="bg-white border-b border-gray-100 px-8 h-14 flex items-center gap-8 sticky top-0 z-50">
-            <Link href="/" className="font-bold text-base text-indigo-600 tracking-tight mr-auto">
-              OrderMS
-            </Link>
-            <Link href="/create-order" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
-              Create Order
-            </Link>
-            <Link href="/orders" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
-              Orders
-            </Link>
-            <Link href="/analytics" className="text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors">
-              Analytics
-            </Link>
-          </nav>
-          <main className="max-w-5xl mx-auto px-4 py-8">{children}</main>
+<nav className="bg-slate-900 border-b border-slate-800 px-6 h-14 flex items-center">
+  {/* Brand */}
+  <Link href="/" className="flex items-center gap-2 mr-auto">
+    <span className="text-sm font-bold tracking-tight text-white">
+      Order<span className="text-blue-400">MS</span>
+    </span>
+  </Link>
+
+  {/* Nav links */}
+  <div className="flex items-center gap-8 mr-4">
+    <Link
+      href="/create-order"
+      className="text-sm font-semibold text-slate-200 hover:text-white transition-colors"
+    >
+      Create Order
+    </Link>
+
+    <Link
+      href="/orders"
+      className="text-sm font-semibold text-slate-200 hover:text-white transition-colors"
+    >
+      Orders
+    </Link>
+
+    <Link
+      href="/analytics"
+      className="text-sm font-semibold text-slate-200 hover:text-white transition-colors"
+    >
+      Analytics
+    </Link>
+  </div>
+</nav>
+
+          <main className="max-w-6xl mx-auto px-6 py-6">{children}</main>
         </QueryClientProvider>
       </body>
     </html>

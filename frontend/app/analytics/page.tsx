@@ -12,6 +12,13 @@ const formatDate = (dateStr: string) => {
   });
 };
 
+const itemRankClasses = (index: number) => {
+  if (index === 0) return "inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700";
+  if (index === 1) return "inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold bg-gray-100 text-gray-600";
+  if (index === 2) return "inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold bg-orange-100 text-orange-600";
+  return "inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold bg-indigo-50 text-indigo-500";
+};
+
 export default function AnalyticsPage() {
   const ordersPerDay = useOrdersPerDay();
   const revenuePerStore = useRevenuePerStore();
@@ -28,13 +35,18 @@ export default function AnalyticsPage() {
   const hasError = ordersPerDay.isError || revenuePerStore.isError || topItems.isError;
 
   return (
-    <div className="bg-white p-6 rounded shadow">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-        <div>
-          <h1 className="text-3xl font-bold text-indigo-600">Analytics</h1>
-          <p className="text-gray-700 mt-1 font-medium">Order and store performance metrics from your system.</p>
-        </div>
-      </div>
+    <div className="min-h-[85vh] bg-slate-50 py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="bg-white border border-slate-200 rounded-[2rem] shadow-sm p-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-8">
+            <div>
+              <span className="inline-flex items-center rounded-full bg-blue-50 text-blue-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide mb-3">
+                Analytics
+              </span>
+              <h1 className="text-4xl font-semibold tracking-tight text-slate-900">Platform insights</h1>
+              <p className="text-sm text-slate-600 mt-2">Track daily order trends, store revenue, and top selling items in one place.</p>
+            </div>
+          </div>
 
       {isLoading && <p className="text-gray-700 font-medium">Loading analytics data...</p>}
       {hasError && <p className="text-red-600 font-medium">Unable to load analytics. Please refresh or try again later.</p>}
@@ -131,14 +143,10 @@ export default function AnalyticsPage() {
                 </tr>
               </thead>
               <tbody>
-                {topItems.data?.map((row,index) => (
+                {topItems.data?.map((row, index) => (
                   <tr key={row.item_id} className="border-t border-gray-200 hover:bg-gray-50">
-                        <td className="px-4 py-3">
-                      <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold
-                        ${index === 0 ? "bg-yellow-100 text-yellow-700" :
-                          index === 1 ? "bg-gray-100 text-gray-600" :
-                          index === 2 ? "bg-orange-100 text-orange-600" :
-                          "bg-indigo-50 text-indigo-500"}`}>
+                    <td className="px-4 py-3">
+                      <span className={itemRankClasses(index)}>
                         #{index + 1}
                       </span>
                     </td>
@@ -160,5 +168,7 @@ export default function AnalyticsPage() {
         </section>
       </div>
     </div>
+  </div>
+</div>
   );
 }

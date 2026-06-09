@@ -37,7 +37,7 @@ export const ordersPerDay = async (req, res, next) => {
       {
         $group: {
           _id: {
-            $dateToString: { format: "%Y-%m-%d", date: "$created_at" }
+            $dateToString: { format: "%Y-%m-%d", date: "$created_at", timezone: "Asia/Kolkata" }
           },
           count: { $sum: 1 },
           revenue: { $sum: "$total_amount" }

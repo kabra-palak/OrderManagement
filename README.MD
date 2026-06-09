@@ -1,6 +1,11 @@
 # 🛒 Multi-Store Order Management System
 
 A full-stack order management system supporting multiple stores with real-time updates and data analytics.
+## Live Demo
+
+- Frontend: https://order-management-neon-five.vercel.app/
+- Backend: https://ordermanagement-tom7.onrender.com
+- Repository: https://github.com/kabra-palak/OrderManagement
 
 ## 🧰 Tech Stack
 
